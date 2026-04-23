@@ -1,0 +1,20 @@
+kind: Workflow
+trigger:
+  kind: OnConversationStart
+  id: promo_pipeline_workflow
+  actions:
+    # Stage 1: Route the question and retrieve context from Azure AI Search
+    - kind: InvokeAzureAgent
+      id: invoke_retriever
+      displayName: Retrieval phase — search Excel + Word sources
+      agent:
+        name: PromoRetriever
+        conversationId: =System.ConversationId
+
+    # Stage 2: Generate a grounded Hebrew answer from the retrieved context
+    - kind: InvokeAzureAgent
+      id: invoke_answer
+      displayName: Answer phase — generate grounded Hebrew answer
+      agent:
+        name: PromoAnswer
+        conversationId: =System.ConversationId
