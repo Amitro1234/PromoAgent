@@ -14,7 +14,7 @@ variables:
   appName: 'promo-agent'
   language: 'python'
   azureServiceConnection: 'Azure-ServiceConnection'
-  containerRegistry: 'keshetacr.azurecr.io'
+  containerRegistry: 'keshetacr-chevbpakg6b0gxfb.azurecr.io'
 
 stages:
 - stage: Test
@@ -39,7 +39,7 @@ stages:
     - template: templates/build.yml@pipelines
       parameters:
         appName: 'promo-agent'
-        containerRegistry: 'keshetacr.azurecr.io'
+        containerRegistry: 'keshetacr-chevbpakg6b0gxfb.azurecr.io'
         azureServiceConnection: 'Azure-ServiceConnection'
         dockerfilePath: 'Dockerfile'
 
@@ -59,7 +59,7 @@ stages:
             parameters:
               appName: 'promo-agent'
               environment: 'stage'
-              containerRegistry: 'keshetacr.azurecr.io'
+              containerRegistry: 'keshetacr-chevbpakg6b0gxfb.azurecr.io'
               azureServiceConnection: 'Azure-ServiceConnection'
 
 - stage: DeployProd
@@ -78,5 +78,5 @@ stages:
             parameters:
               appName: 'promo-agent'
               environment: 'prod'
-              containerRegistry: 'keshetacr.azurecr.io'
+              containerRegistry: 'keshetacr-chevbpakg6b0gxfb.azurecr.io'
               azureServiceConnection: 'Azure-ServiceConnection'
