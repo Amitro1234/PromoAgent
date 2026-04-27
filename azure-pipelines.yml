@@ -38,9 +38,9 @@ stages:
     steps:
     - template: templates/build.yml@pipelines
       parameters:
-        appName: $(appName)
-        containerRegistry: $(containerRegistry)
-        azureServiceConnection: $(azureServiceConnection)
+        appName: 'promo-agent'
+        containerRegistry: 'keshetacr.azurecr.io'
+        azureServiceConnection: 'Azure-ServiceConnection'
         dockerfilePath: 'Dockerfile'
 
 - stage: DeployStaging
@@ -57,10 +57,10 @@ stages:
           steps:
           - template: templates/deploy.yml@pipelines
             parameters:
-              appName: $(appName)
+              appName: 'promo-agent'
               environment: 'stage'
-              containerRegistry: $(containerRegistry)
-              azureServiceConnection: $(azureServiceConnection)
+              containerRegistry: 'keshetacr.azurecr.io'
+              azureServiceConnection: 'Azure-ServiceConnection'
 
 - stage: DeployProd
   displayName: 'Deploy to Production'
@@ -76,7 +76,7 @@ stages:
           steps:
           - template: templates/deploy.yml@pipelines
             parameters:
-              appName: $(appName)
+              appName: 'promo-agent'
               environment: 'prod'
-              containerRegistry: $(containerRegistry)
-              azureServiceConnection: $(azureServiceConnection)
+              containerRegistry: 'keshetacr.azurecr.io'
+              azureServiceConnection: 'Azure-ServiceConnection'
